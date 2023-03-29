@@ -26,6 +26,7 @@ class GraphWidget:
         self.navigation_toolbar = tk.Frame(self.master, borderwidth=0.5, relief='solid', bg='white')
         self.navigation_label = tk.Label(self.navigation_toolbar, text='Навигация', bg='white')
         self.navigation_label.grid(row=0, column=0, columnspan=2, sticky='nwe')
+
         self.btn_left = tk.Button(self.navigation_toolbar, text='<', command=self.move_left, bg='white')
         self.btn_left.grid(row=1, column=0)
 
@@ -37,6 +38,7 @@ class GraphWidget:
 
         self.btn_down = tk.Button(self.navigation_toolbar, text='v', command=self.move_down, bg='white')
         self.btn_down.grid(row=2, column=1)
+
         self.navigation_toolbar.grid(row=2, column=0)
 
         self.zoom_toolbar = tk.Frame(self.master, bg='white')
@@ -53,26 +55,14 @@ class GraphWidget:
 
         self.color_var = tk.StringVar()
         self.color_var.set('blue')
+
         self.color_label = tk.Label(self.master, text='Цвет:',pady=10, bg='white')
         self.color_label.grid(row=4, column=0)
+
         self.color_menu = ttk.Combobox(self.master, textvariable=self.color_var,
                                        values=['blue', 'red', 'black', 'yellow', 'green'])
         self.color_menu.bind('<<ComboboxSelected>>', self.apply_params)
         self.color_menu.grid(row=4, column=1)
-
-        # self.lbl_color = tk.Label(self.master, text='Color:')
-        # self.lbl_color.grid(row=4, column=0)
-        # 
-        # self.entry_color = tk.Entry(self.master)
-        # self.entry_color.insert(0, self.color)
-        # self.entry_color.grid(row=4, column=1)
-
-        # self.lbl_line_type = tk.Label(self.master, text='Line Type:')
-        # self.lbl_line_type.grid(row=5, column=0)
-
-        # self.entry_line_type = tk.Entry(self.master)
-        # self.entry_line_type.insert(0, self.line_type)
-        # self.entry_line_type.grid(row=5, column=1)
 
         self.btn_apply = tk.Button(self.master, text='Apply', command=self.apply_params, bg='white')
         self.btn_apply.grid(row=6, column=0, columnspan=2,pady=10)
